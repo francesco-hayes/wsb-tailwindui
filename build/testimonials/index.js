@@ -57,6 +57,39 @@ function Edit({
 }) {
   // const props = useBlockProps();
 
+  const setTestimonial = (position, {
+    keys,
+    content
+  }) => {
+    const testimonial = position === "left" ? attributes.testimonial_one : attributes.testimonial_two;
+
+    // Split the nested key into its segments
+    const segments = keys.split(".");
+    let target = testimonial;
+
+    // Traverse the object structure using the segments
+    for (let i = 0; i < segments.length - 1; i++) {
+      target = target[segments[i]];
+    }
+
+    // Update the value of the nested key
+    target[segments[segments.length - 1]] = content;
+    if (position === "left") {
+      setAttributes({
+        testimonial_one: {
+          ...attributes.testimonial_one,
+          ...testimonial
+        }
+      });
+    } else {
+      setAttributes({
+        testimonial_two: {
+          ...attributes.testimonial_two,
+          ...testimonial
+        }
+      });
+    }
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "relative isolate overflow-hidden pt-14"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -65,10 +98,121 @@ function Edit({
     className: "mx-auto max-w-7xl px-6 lg:px-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-8 xl:gap-20"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-    allowedBlocks: ["wsb-tailwindui/testimonial"],
-    renderAppender: _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.ButtonBlockAppender
-  })))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
+    className: "flex flex-auto flex-col justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
+    className: "text-lg leading-8 text-gray-900"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: attributes.testimonial_one.text,
+    onChange: content => setTestimonial("left", {
+      keys: "text",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write the testimonial here...")
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figcaption", {
+    className: "mt-10 flex items-center gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => {
+      setTestimonial("left", {
+        keys: "author.image.url",
+        content: media.url
+      });
+      setTestimonial("left", {
+        keys: "author.image.alt",
+        content: media.alt
+      });
+    },
+    allowedTypes: ["image"],
+    value: attributes.testimonial_one.author?.image?.url,
+    render: ({
+      open
+    }) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      onClick: open,
+      className: "h-14 w-14 rounded-full bg-gray-50 cursor-pointer",
+      src: attributes.testimonial_one.author?.image?.url,
+      alt: ""
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-base"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    className: "font-semibold text-gray-900",
+    value: attributes.testimonial_one.author?.name,
+    onChange: content => setTestimonial("left", {
+      keys: "author.name",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Author name")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    className: "mt-1 text-gray-500",
+    value: attributes.testimonial_one.author?.title,
+    onChange: content => setTestimonial("left", {
+      keys: "author.title",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Author title")
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex flex-col border-t border-gray-900/10 pt-10 sm:pt-16 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-20"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
+    className: "flex flex-auto flex-col justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
+    className: "text-lg leading-8 text-gray-900"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: attributes.testimonial_two.text,
+    onChange: content => setTestimonial("right", {
+      keys: "text",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Write the testimonial here...")
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figcaption", {
+    className: "mt-10 flex items-center gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => {
+      setTestimonial("right", {
+        keys: "author.image.url",
+        content: media.url
+      });
+      setTestimonial("right", {
+        keys: "author.image.alt",
+        content: media.alt
+      });
+    },
+    allowedTypes: ["image"],
+    value: attributes.testimonial_two.author?.image?.url,
+    render: ({
+      open
+    }) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      onClick: open,
+      className: "h-14 w-14 rounded-full bg-gray-50 cursor-pointer",
+      src: attributes.testimonial_two.author?.image?.url,
+      alt: ""
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-base"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    className: "font-semibold text-gray-900",
+    value: attributes.testimonial_two.author?.name,
+    onChange: content => setTestimonial("right", {
+      keys: "author.name",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Author name")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    className: "mt-1 text-gray-500",
+    value: attributes.testimonial_two.author?.title,
+    onChange: content => setTestimonial("right", {
+      keys: "author.title",
+      content
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Author title")
+  })))))))));
 }
 
 /***/ }),
@@ -163,17 +307,67 @@ function save({
   attributes
 }) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "relative isolate overflow-hidden pt-14"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: "bg-white py-24 sm:py-32"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mx-auto max-w-7xl px-6 lg:px-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+    className: "mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-8 xl:gap-20"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
+    className: "flex flex-auto flex-col justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
+    className: "text-lg leading-8 text-gray-900"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: attributes.testimonial_one.text
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figcaption", {
+    className: "mt-10 flex items-center gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    onClick: open,
+    className: "h-14 w-14 rounded-full bg-gray-50",
+    src: attributes.testimonial_one.author?.image?.url,
+    alt: attributes.testimonial_one.author?.image?.alt
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-base"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "div",
+    className: "font-semibold text-gray-900",
+    value: attributes.testimonial_one.author?.name
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "div",
+    className: "mt-1 text-gray-500",
+    value: attributes.testimonial_one.author?.title
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex flex-col border-t border-gray-900/10 pt-10 sm:pt-16 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-20"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figure", {
+    className: "flex flex-auto flex-col justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("blockquote", {
+    className: "text-lg leading-8 text-gray-900"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: attributes.testimonial_two.text
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("figcaption", {
+    className: "mt-10 flex items-center gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    onClick: open,
+    className: "h-14 w-14 rounded-full bg-gray-50",
+    src: attributes.testimonial_two.author?.image?.url,
+    alt: attributes.testimonial_two.author?.image?.alt
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-base"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "div",
+    className: "font-semibold text-gray-900",
+    value: attributes.testimonial_two.author?.name
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "div",
+    className: "mt-1 text-gray-500",
+    value: attributes.testimonial_two.author?.title
+  })))))))));
 }
 
 /***/ }),
@@ -248,7 +442,7 @@ module.exports = window["wp"]["i18n"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/testimonials","version":"0.1.0","title":"TW Testimonials","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wsb-tailwindui-testimonials","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/testimonials","version":"0.1.0","title":"TW Testimonials","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wsb-tailwindui-testimonials","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"testimonial_one":{"type":"object","default":{"text":"","author":{"name":"","title":"","image":{"alt":"","url":"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"}}}},"testimonial_two":{"type":"object","default":{"text":"","author":{"name":"","title":"","image":{"alt":"","url":"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"}}}}}}');
 
 /***/ })
 
