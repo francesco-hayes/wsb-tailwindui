@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wsb-tailwindui/steps",
+	"version": "0.1.0",
+	"title": "TW Steps",
+	"category": "wsb-tailwindui",
+	"icon": "dashicons-align-full-width",
+	"description": "Example block scaffolded with Create Block tool.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wsb-tailwindui-steps",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"steps": {
+			"type": "array",
+			"default": [
+				{
+					"name": "Create account",
+					"description": "Vitae sed mi luctus laoreet."
+				},
+				{
+					"name": "Profile information",
+					"description": "Cursus semper viverra facilisis et et some more."
+				},
+				{
+					"name": "Business information",
+					"desription": "Penatibus eu quis ante."
+				},
+				{
+					"name": "Theme",
+					"desription": "Faucibus nec enim leo et."
+				},
+				{
+					"name": "Preview",
+					"desription": "Iusto et officia maiores porro ad non quas."
+				}
+			]
+		}
+	}
+}

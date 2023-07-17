@@ -1,22 +1,35 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "wsb-tailwindui/testimonial",
+  "name": "wsb-tailwindui/stats",
   "version": "0.1.0",
-  "title": "TW Testimonial",
+  "title": "TW Stats",
   "category": "wsb-tailwindui",
   "icon": "dashicons-align-full-width",
   "description": "Example block scaffolded with Create Block tool.",
   "supports": {
     "html": false
   },
-  "textdomain": "wsb-tailwindui-testimonial",
+  "textdomain": "wsb-tailwindui-stats",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "attributes": {
-    "testimonial": {
-      "type": "number"
+    "title": {
+      "type": "string",
+      "default": "Trusted by event hosts around the globe."
+    },
+    "years": {
+      "type": "string",
+      "default": "43"
+    },
+    "events": {
+      "type": "string",
+      "default": "100,000"
+    },
+    "speakers": {
+      "type": "string",
+      "default": "4,000+"
     }
   }
 }

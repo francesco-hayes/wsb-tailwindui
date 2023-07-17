@@ -23,6 +23,8 @@
 function create_block_wsb_tailwindui_block_init() {
 	register_block_type(__DIR__ . '/build/hero-cta');
 	register_block_type(__DIR__ . '/build/testimonials');
+	register_block_type(__DIR__ . '/build/stats');
+	register_block_type(__DIR__ . '/build/steps');
 }
 add_action( 'init', 'create_block_wsb_tailwindui_block_init' );
 
