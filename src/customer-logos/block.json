@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wsb-tailwindui/customer-logos",
+	"version": "0.1.0",
+	"title": "TW Customer Logos",
+	"category": "wsb-tailwindui",
+	"icon": "dashicons-align-full-width",
+	"description": "Example block scaffolded with Create Block tool.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wsb-tailwindui-customer-logos",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"keywords": [
+		"images",
+		"logos",
+		"tailwindui"
+	],
+	"attributes": {
+		"images": {
+			"type": "array",
+			"default": [
+				{
+					"src": "https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg",
+					"alt": "Transistor logo"
+				},
+				{
+					"src": "https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg",
+					"alt": "Transistor logo"
+				}
+			],
+			"source": "query",
+			"selector": "img",
+			"query": {
+				"src": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "src"
+				},
+				"alt": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "alt"
+				},
+				"id": {
+					"type": "number"
+				}
+			}
+		}
+	}
+}
