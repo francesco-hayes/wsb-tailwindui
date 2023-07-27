@@ -27,6 +27,7 @@ function create_block_wsb_tailwindui_block_init() {
 	register_block_type(__DIR__ . '/build/steps');
 	register_block_type(__DIR__ . '/build/cta-center');
 	register_block_type(__DIR__ . '/build/customer-logos');
+	register_block_type(__DIR__ . '/build/featured-section');
 }
 add_action( 'init', 'create_block_wsb_tailwindui_block_init' );
 

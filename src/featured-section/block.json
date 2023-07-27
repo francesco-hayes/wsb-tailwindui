@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wsb-tailwindui/featured-section",
+	"version": "0.1.0",
+	"title": "TW Featured Section",
+	"category": "wsb-tailwindui",
+	"icon": "dashicons-align-full-width",
+	"description": "Example block scaffolded with Create Block tool.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "wsb-tailwindui-featured-section",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"selector": "h2"
+		},
+		"sub_title": {
+			"type": "string",
+			"selector": "p"
+		},
+		"paragraph": {
+			"type": "string",
+			"selector": "p"
+		},
+		"image": {
+			"type": "object",
+			"default": {
+				"id": null,
+				"src": "https://tailwindui.com/img/component-images/dark-project-app-screenshot.png",
+				"alt": "Filler alt text"
+			},
+			"source": "query",
+			"selector": "img",
+			"query": {
+				"src": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "src"
+				},
+				"alt": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "alt"
+				},
+				"id": {
+					"type": "number"
+				}
+			}
+		},
+		"direction": {
+			"type": "string",
+			"default": "left"
+		}
+	}
+}
