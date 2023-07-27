@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wsb-tailwindui/cta-center",
+  "version": "0.1.0",
+  "title": "TW CTA Center",
+  "category": "wsb-tailwindui",
+  "icon": "dashicons-align-full-width",
+  "description": "Example block scaffolded with Create Block tool.",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "wsb-tailwindui-cta-center",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "sub_title": {
+      "type": "string",
+      "default": ""
+    },
+    "buttons": {
+      "type": "array",
+      "default": [
+        {
+          "url": "#",
+          "text": "Get Started"
+        },
+        {
+          "url": "#",
+          "text": "Learn more"
+        }
+      ],
+      "source": "query",
+      "selector": "a",
+      "query": {
+        "url": {
+          "type": "string",
+          "source": "attribute",
+          "attribute": "href"
+        },
+        "text": {
+          "type": "string",
+          "source": "text",
+          "selector": "a"
+        }
+      }
+    }
+  }
+}
