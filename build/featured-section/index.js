@@ -72,7 +72,7 @@ function Edit({
     value: "right"
   }];
   const [isHovered, setIsHovered] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const onSelectImage = function (media) {
+  const setImage = function (media) {
     setAttributes({
       image: {
         id: media.id,

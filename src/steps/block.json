@@ -15,6 +15,18 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"backgroundColor": {
+			"type": "string"
+		},
+		"titleTextColor": {
+			"type": "string"
+		},
+		"subTitleTextColor": {
+			"type": "string"
+		},
+		"stepsBackgroundColor": {
+			"type": "string"
+		},
 		"steps": {
 			"type": "array",
 			"default": [
