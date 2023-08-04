@@ -53,7 +53,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const [isHovered, setIsHovered] = useState(null);
 
-	const onSelectImage = function (media) {
+	const setImage = function (media) {
 		setAttributes({
 			image: {
 				id: media.id,
