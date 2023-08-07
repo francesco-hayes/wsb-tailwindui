@@ -87,118 +87,121 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<section
-			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-			style={{ backgroundColor: backgroundColor }}
-		>
-			<InspectorControls>
-				<PanelColorSettings
-					title={__("Color settings")}
-					initialOpen={false}
-					colorSettings={[
-						{
-							value: backgroundColor,
-							onChange: (content) =>
-								setAttributes({ backgroundColor: content }),
-							label: __("Background color"),
-						},
-						{
-							value: stepsBackgroundColor,
-							onChange: (content) =>
-								setAttributes({ stepsBackgroundColor: content }),
-							label: __("Steps background color"),
-						},
-						{
-							value: titleTextColor,
-							onChange: (content) => setAttributes({ titleTextColor: content }),
-							label: __("Title color"),
-						},
-						{
-							value: subTitleTextColor,
-							onChange: (content) =>
-								setAttributes({ subTitleTextColor: content }),
-							label: __("Sub title color"),
-						},
-					]}
-				/>
-			</InspectorControls>
-			<div className="mx-auto max-w-3xl">
-				<nav aria-label="Progress">
-					<ul role="list" className="overflow-hidden list-none">
-						{steps.map((step, stepIdx) => (
-							<li
-								key={step.name}
-								className={classNames(
-									stepIdx !== steps.length - 1 ? "pb-10" : "",
-									"relative"
-								)}
-							>
-								<>
-									{stepIdx !== steps.length - 1 ? (
-										<div
-											className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
-											aria-hidden="true"
-											style={{ backgroundColor: stepsBackgroundColor }}
-										/>
-									) : null}
-									<p className="group relative flex items-start">
-										<span className="flex h-9 items-center">
-											<span
-												onMouseOver={() => handleMouseOver(stepIdx)}
-												onMouseOut={handleMouseOut}
-												className="relative text-white z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800 group-hover:cursor-pointer"
-												onClick={() => removeStep(stepIdx)}
-												style={{ backgroundColor: stepsBackgroundColor, color: titleTextColor }}
-											>
-												{isHovered === stepIdx ? (
-													<XMarkIcon
-														className="h-5 w-5 text-white"
-														aria-hidden="true"
-													/>
-												) : (
-													stepIdx + 1
-												)}
+		<div style={{ backgroundColor: backgroundColor }}>
+			<section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<InspectorControls>
+					<PanelColorSettings
+						title={__("Color settings")}
+						initialOpen={false}
+						colorSettings={[
+							{
+								value: backgroundColor,
+								onChange: (content) =>
+									setAttributes({ backgroundColor: content }),
+								label: __("Background color"),
+							},
+							{
+								value: stepsBackgroundColor,
+								onChange: (content) =>
+									setAttributes({ stepsBackgroundColor: content }),
+								label: __("Steps background color"),
+							},
+							{
+								value: titleTextColor,
+								onChange: (content) =>
+									setAttributes({ titleTextColor: content }),
+								label: __("Title color"),
+							},
+							{
+								value: subTitleTextColor,
+								onChange: (content) =>
+									setAttributes({ subTitleTextColor: content }),
+								label: __("Sub title color"),
+							},
+						]}
+					/>
+				</InspectorControls>
+				<div className="mx-auto max-w-3xl">
+					<nav aria-label="Progress">
+						<ul role="list" className="overflow-hidden list-none">
+							{steps.map((step, stepIdx) => (
+								<li
+									key={step.name}
+									className={classNames(
+										stepIdx !== steps.length - 1 ? "pb-10" : "",
+										"relative"
+									)}
+								>
+									<>
+										{stepIdx !== steps.length - 1 ? (
+											<div
+												className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+												aria-hidden="true"
+												style={{ backgroundColor: stepsBackgroundColor }}
+											/>
+										) : null}
+										<p className="group relative flex items-start">
+											<span className="flex h-9 items-center">
+												<span
+													onMouseOver={() => handleMouseOver(stepIdx)}
+													onMouseOut={handleMouseOut}
+													className="relative text-white z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800 group-hover:cursor-pointer"
+													onClick={() => removeStep(stepIdx)}
+													style={{
+														backgroundColor: stepsBackgroundColor,
+														color: titleTextColor,
+													}}
+												>
+													{isHovered === stepIdx ? (
+														<XMarkIcon
+															className="h-5 w-5 text-white"
+															aria-hidden="true"
+														/>
+													) : (
+														stepIdx + 1
+													)}
+												</span>
 											</span>
-										</span>
-										<span className="ml-4 flex min-w-0 flex-col">
-											<RichText
-												{...blockProps}
-												tagName="span"
-												className="text-sm font-medium"
-												value={step.name}
-												onChange={(content) =>
-													setStep(stepIdx, "name", content)
-												}
-												placeholder={__("Step name...")}
-												style={{
-													color: titleTextColor,
-												}}
-											/>
+											<span className="ml-4 flex min-w-0 flex-col">
+												<RichText
+													{...blockProps}
+													tagName="span"
+													className="text-sm font-medium"
+													value={step.name}
+													onChange={(content) =>
+														setStep(stepIdx, "name", content)
+													}
+													placeholder={__("Step name...")}
+													style={{
+														color: titleTextColor,
+													}}
+												/>
 
-											<RichText
-												{...blockProps}
-												tagName="span"
-												className="text-sm text-gray-500"
-												value={step.description}
-												onChange={(content) =>
-													setStep(stepIdx, "description", content)
-												}
-												placeholder={__("Step description...")}
-												style={{
-													color: subTitleTextColor,
-												}}
-											/>
-										</span>
-									</p>
-								</>
+												<RichText
+													{...blockProps}
+													tagName="span"
+													className="text-sm text-gray-500"
+													value={step.description}
+													onChange={(content) =>
+														setStep(stepIdx, "description", content)
+													}
+													placeholder={__("Step description...")}
+													style={{
+														color: subTitleTextColor,
+													}}
+												/>
+											</span>
+										</p>
+									</>
+								</li>
+							))}
+							<li>
+								<Button onClick={addStep}>Add Step</Button>
 							</li>
-						))}
-						<li>
-							<Button onClick={addStep}>Add Step</Button>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</section>
+						</ul>
+					</nav>
+				</div>
+			</section>
+		</div>
 	);
 }

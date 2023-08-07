@@ -105,10 +105,11 @@ function Edit({
     setIsHovered(null);
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
     style: {
       backgroundColor: backgroundColor
     }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("section", {
+    className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color settings"),
     initialOpen: false,
@@ -191,7 +192,7 @@ function Edit({
     }
   }))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
     onClick: addStep
-  }, "Add Step"))))));
+  }, "Add Step")))))));
 }
 
 /***/ }),
@@ -260,10 +261,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -288,37 +291,63 @@ function classNames(...classes) {
 function save({
   attributes
 }) {
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
   const {
-    steps
+    steps,
+    titleTextColor,
+    subTitleTextColor,
+    backgroundColor,
+    stepsBackgroundColor
   } = attributes;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("nav", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: backgroundColor
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("section", {
+    className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "mx-auto max-w-3xl"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("nav", {
     "aria-label": "Progress"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
     role: "list",
     className: "overflow-hidden list-none"
-  }, steps.map((step, stepIdx) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }, steps.map((step, stepIdx) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
     key: step.name,
     className: classNames(stepIdx !== steps.length - 1 ? "pb-10" : "", "relative")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, stepIdx !== steps.length - 1 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, stepIdx !== steps.length - 1 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600",
-    "aria-hidden": "true"
-  }) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    "aria-hidden": "true",
+    style: {
+      backgroundColor: stepsBackgroundColor
+    }
+  }) : null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
     className: "group relative flex items-start"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "flex h-9 items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    style: {
+      backgroundColor: stepsBackgroundColor,
+      color: titleTextColor
+    },
     className: "relative text-white z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800"
-  }, stepIdx + 1)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, stepIdx + 1)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "ml-4 flex min-w-0 flex-col"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "span",
     className: "text-sm font-medium",
-    value: step.name
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    value: step.name,
+    style: {
+      color: titleTextColor
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "span",
     className: "text-sm text-gray-500",
-    value: step.description
-  }))))))));
+    value: step.description,
+    style: {
+      color: subTitleTextColor
+    }
+  }))))))))))));
 }
 
 /***/ }),
