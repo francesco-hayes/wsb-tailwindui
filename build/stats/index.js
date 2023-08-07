@@ -12,13 +12,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/stats/editor.scss");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/stats/editor.scss");
+
 
 /**
  * Retrieves the translation of text.
@@ -55,57 +57,125 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)();
+  const {
+    backgroundColor,
+    statBackgroundColor,
+    statTextColor,
+    titleTextColor
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: backgroundColor
+    },
     className: "bg-white py-24 sm:py-32"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color settings"),
+    initialOpen: false,
+    colorSettings: [{
+      value: backgroundColor,
+      onChange: content => setAttributes({
+        backgroundColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background color")
+    }, {
+      value: statBackgroundColor,
+      onChange: content => setAttributes({
+        statBackgroundColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Stat background color")
+    }, {
+      value: titleTextColor,
+      onChange: content => setAttributes({
+        titleTextColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Title text color")
+    }, {
+      value: statTextColor,
+      onChange: content => setAttributes({
+        statTextColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Stat text color")
+    }]
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "mx-auto max-w-7xl px-6 lg:px-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "mx-auto max-w-2xl lg:max-w-none"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "text-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "h2",
     className: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl",
     value: attributes.title,
     onChange: content => setAttributes({
       title: content
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dl", {
+    }),
+    style: {
+      color: titleTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dl", {
     className: "mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Years"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, "Years"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
     value: attributes.years,
     onChange: content => setAttributes({
       years: content
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }),
+    style: {
+      color: statTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Events"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, "Events"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
     value: attributes.events,
     onChange: content => setAttributes({
       events: content
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }),
+    style: {
+      color: statTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Speakers"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, "Speakers"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
     value: attributes.speakers,
     onChange: content => setAttributes({
       speakers: content
-    })
-  }))))));
+    }),
+    style: {
+      color: statTextColor
+    }
+  })))))));
 }
 
 /***/ }),
@@ -174,10 +244,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -199,45 +271,85 @@ __webpack_require__.r(__webpack_exports__);
 function save({
   attributes
 }) {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
+  const {
+    backgroundColor,
+    statBackgroundColor,
+    statTextColor,
+    titleTextColor
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: backgroundColor
+    },
     className: "bg-white py-24 sm:py-32"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "mx-auto max-w-7xl px-6 lg:px-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "mx-auto max-w-2xl lg:max-w-none"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "text-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "h2",
     className: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl",
-    value: attributes.title
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dl", {
+    value: attributes.title,
+    style: {
+      color: titleTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dl", {
     className: "mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Years"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, "Years"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.years
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    value: attributes.years,
+    style: {
+      color: statTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Events"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, "Events"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.events
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    value: attributes.events,
+    style: {
+      color: statTextColor
+    }
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      backgroundColor: statBackgroundColor
+    },
     className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("dt", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
+    style: {
+      color: statTextColor
+    },
     className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Speakers"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, "Speakers"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     tagName: "dd",
     className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.speakers
-  }))))));
+    value: attributes.speakers,
+    style: {
+      color: statTextColor
+    }
+  })))))));
 }
 
 /***/ }),
@@ -306,13 +418,40 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _extends)
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
 /***/ "./src/stats/block.json":
 /*!******************************!*\
   !*** ./src/stats/block.json ***!
   \******************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/stats","version":"0.1.0","title":"TW Stats","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wsb-tailwindui-stats","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"title":{"type":"string","default":"Trusted by event hosts around the globe."},"years":{"type":"string","default":"43"},"events":{"type":"string","default":"100,000"},"speakers":{"type":"string","default":"4,000+"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/stats","version":"0.1.0","title":"TW Stats","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wsb-tailwindui-stats","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"backgroundColor":{"type":"string"},"statBackgroundColor":{"type":"string"},"titleTextColor":{"type":"string"},"statTextColor":{"type":"string"},"title":{"type":"string","default":"Trusted by event hosts around the globe."},"years":{"type":"string","default":"43"},"events":{"type":"string","default":"100,000"},"speakers":{"type":"string","default":"4,000+"}}}');
 
 /***/ })
 

@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { RichText } from "@wordpress/block-editor";
+import {
+	RichText,
+	useBlockProps,
+	InspectorControls,
+	PanelColorSettings,
+} from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,53 +35,118 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
+	const blockProps = useBlockProps();
+
+	const {
+		backgroundColor,
+		statBackgroundColor,
+		statTextColor,
+		titleTextColor,
+	} = attributes;
+
 	return (
-		<div className="bg-white py-24 sm:py-32">
+		<div
+			style={{ backgroundColor: backgroundColor }}
+			className="bg-white py-24 sm:py-32"
+		>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__("Color settings")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: backgroundColor,
+							onChange: (content) =>
+								setAttributes({ backgroundColor: content }),
+							label: __("Background color"),
+						},
+						{
+							value: statBackgroundColor,
+							onChange: (content) =>
+								setAttributes({ statBackgroundColor: content }),
+							label: __("Stat background color"),
+						},
+						{
+							value: titleTextColor,
+							onChange: (content) => setAttributes({ titleTextColor: content }),
+							label: __("Title text color"),
+						},
+						{
+							value: statTextColor,
+							onChange: (content) => setAttributes({ statTextColor: content }),
+							label: __("Stat text color"),
+						},
+					]}
+				/>
+			</InspectorControls>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-2xl lg:max-w-none">
 					<div className="text-center">
 						<RichText
+							{...blockProps}
 							tagName="h2"
 							className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
 							value={attributes.title}
 							onChange={(content) => setAttributes({ title: content })}
+							style={{ color: titleTextColor }}
 						/>
-						{/* <p className="mt-4 text-lg leading-8 text-gray-600">
-							Lorem ipsum dolor sit amet consect adipisicing possimus.
-						</p> */}
 					</div>
 					<dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3">
-						<div className="flex flex-col bg-gray-400/5 p-8">
-							<dt className="text-sm font-semibold leading-6 text-gray-600">
+						<div
+							style={{ backgroundColor: statBackgroundColor }}
+							className="flex flex-col bg-gray-400/5 p-8"
+						>
+							<dt
+								style={{ color: statTextColor }}
+								className="text-sm font-semibold leading-6 text-gray-600"
+							>
 								Years
 							</dt>
 							<RichText
+								{...useBlockProps}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.years}
 								onChange={(content) => setAttributes({ years: content })}
+								style={{ color: statTextColor }}
 							/>
 						</div>
-						<div className="flex flex-col bg-gray-400/5 p-8">
-							<dt className="text-sm font-semibold leading-6 text-gray-600">
+						<div
+							style={{ backgroundColor: statBackgroundColor }}
+							className="flex flex-col bg-gray-400/5 p-8"
+						>
+							<dt
+								style={{ color: statTextColor }}
+								className="text-sm font-semibold leading-6 text-gray-600"
+							>
 								Events
 							</dt>
 							<RichText
+								{...useBlockProps}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.events}
 								onChange={(content) => setAttributes({ events: content })}
+								style={{ color: statTextColor }}
 							/>
 						</div>
-						<div className="flex flex-col bg-gray-400/5 p-8">
-							<dt className="text-sm font-semibold leading-6 text-gray-600">
+						<div
+							style={{ backgroundColor: statBackgroundColor }}
+							className="flex flex-col bg-gray-400/5 p-8"
+						>
+							<dt
+								style={{ color: statTextColor }}
+								className="text-sm font-semibold leading-6 text-gray-600"
+							>
 								Speakers
 							</dt>
 							<RichText
+								{...useBlockProps}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.speakers}
 								onChange={(content) => setAttributes({ speakers: content })}
+								style={{ color: statTextColor }}
 							/>
 						</div>
 					</dl>

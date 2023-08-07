@@ -15,6 +15,18 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"backgroundColor": {
+			"type": "string"
+		},
+		"statBackgroundColor": {
+			"type": "string"
+		},
+		"titleTextColor": {
+			"type": "string"
+		},
+		"statTextColor": {
+			"type": "string"
+		},
 		"title": {
 			"type": "string",
 			"default": "Trusted by event hosts around the globe."
