@@ -26,6 +26,7 @@ export default function save({ attributes }) {
 		>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<RichText.Content
+					{...blockProps}
 					tagName="h2"
 					className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-10"
 					value={title}
