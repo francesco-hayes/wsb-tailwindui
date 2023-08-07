@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { MediaUpload } from "@wordpress/block-editor";
+import {
+	MediaUpload,
+	InspectorControls,
+	PanelColorSettings,
+	RichText,
+} from "@wordpress/block-editor";
 import { Button } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
@@ -34,7 +39,7 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { images } = attributes;
+	const { images, title, backgroundColor, titleTextColor } = attributes;
 
 	const [isHovered, setIsHovered] = useState(null);
 
@@ -79,8 +84,38 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<div className="relative bg-gray-900 py-24 sm:py-32">
+		<div
+			style={{ backgroundColor: backgroundColor }}
+			className="relative bg-gray-900 py-24 sm:py-32"
+		>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__("Color settings")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: backgroundColor,
+							onChange: (content) =>
+								setAttributes({ backgroundColor: content }),
+							label: __("Background color"),
+						},
+						{
+							value: titleTextColor,
+							onChange: (content) => setAttributes({ titleTextColor: content }),
+							label: __("Title text color"),
+						},
+					]}
+				/>
+			</InspectorControls>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
+				<RichText
+					tagName="h2"
+					className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-10"
+					onChange={(content) => setAttributes({ title: content })}
+					value={title}
+					placeholder={__("Title for this section...")}
+					style={{ color: titleTextColor }}
+				/>
 				<div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
 					{images.map((image, index) => (
 						<MediaUpload

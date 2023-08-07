@@ -15,11 +15,23 @@
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "keywords": [
+    "clients",
+    "customers",
     "images",
     "logos",
     "tailwindui"
   ],
   "attributes": {
+    "backgroundColor": {
+      "type": "string"
+    },
+    "titleTextColor": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "default": "Our customers"
+    },
     "images": {
       "type": "array",
       "default": [
