@@ -87,7 +87,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<div
+		<section
 			className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
 			style={{ backgroundColor: backgroundColor }}
 		>
@@ -199,6 +199,6 @@ export default function Edit({ attributes, setAttributes }) {
 					</ul>
 				</nav>
 			</div>
-		</div>
+		</section>
 	);
 }
