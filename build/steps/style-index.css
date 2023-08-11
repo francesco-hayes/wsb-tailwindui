@@ -501,6 +501,9 @@ video {
 .-ml-px {
   margin-left: -1px;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -527,9 +530,6 @@ video {
 }
 .mt-6 {
   margin-top: 1.5rem;
-}
-.mb-10 {
-  margin-bottom: 2.5rem;
 }
 .block {
   display: block;

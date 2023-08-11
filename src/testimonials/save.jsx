@@ -18,36 +18,48 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 export default function save({ attributes }) {
 	const blockProps = useBlockProps.save();
 
+	const { testimonial_one, testimonial_two, backgroundColor, textColor } =
+		attributes;
+
 	return (
-		<div className="relative isolate overflow-hidden pt-14">
-			<section className="bg-white py-24 sm:py-32">
+		<div className="relative isolate overflow-hidden">
+			<section className="bg-white py-24 sm:py-32" style={{ backgroundColor: backgroundColor }}>
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
 					<div className="mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-8 xl:gap-20">
 						<div className="flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20">
 							<figure className="flex flex-auto flex-col justify-between">
 								<blockquote className="text-lg leading-8 text-gray-900">
 									<RichText.Content
+										{...blockProps}
 										tagName="p"
-										value={attributes.testimonial_one.text}
+										value={testimonial_one.text}
+										style={{
+											color: textColor,
+										}}
 									/>
 								</blockquote>
 								<figcaption className="mt-10 flex items-center gap-x-6">
 									<img
-										onClick={open}
 										className="h-14 w-14 rounded-full bg-gray-50"
-										src={attributes.testimonial_one.author?.image?.url}
-										alt={attributes.testimonial_one.author?.image?.alt}
+										src={testimonial_one.author?.image?.url}
+										alt={testimonial_one.author?.image?.alt}
 									/>
 									<div className="text-base">
 										<RichText.Content
 											tagName="div"
 											className="font-semibold text-gray-900"
-											value={attributes.testimonial_one.author?.name}
+											value={testimonial_one.author?.name}
+											style={{
+												color: textColor,
+											}}
 										/>
 										<RichText.Content
 											tagName="div"
 											className="mt-1 text-gray-500"
-											value={attributes.testimonial_one.author?.title}
+											value={testimonial_one.author?.title}
+											style={{
+												color: textColor,
+											}}
 										/>
 									</div>
 								</figcaption>
@@ -57,27 +69,36 @@ export default function save({ attributes }) {
 							<figure className="flex flex-auto flex-col justify-between">
 								<blockquote className="text-lg leading-8 text-gray-900">
 									<RichText.Content
+										{...blockProps}
 										tagName="p"
-										value={attributes.testimonial_two.text}
+										value={testimonial_two.text}
+										style={{
+											color: textColor,
+										}}
 									/>
 								</blockquote>
 								<figcaption className="mt-10 flex items-center gap-x-6">
 									<img
-										onClick={open}
 										className="h-14 w-14 rounded-full bg-gray-50"
-										src={attributes.testimonial_two.author?.image?.url}
-										alt={attributes.testimonial_two.author?.image?.alt}
+										src={testimonial_two.author?.image?.url}
+										alt={testimonial_two.author?.image?.alt}
 									/>
 									<div className="text-base">
 										<RichText.Content
 											tagName="div"
 											className="font-semibold text-gray-900"
-											value={attributes.testimonial_two.author?.name}
+											value={testimonial_two.author?.name}
+											style={{
+												color: textColor,
+											}}
 										/>
 										<RichText.Content
 											tagName="div"
 											className="mt-1 text-gray-500"
-											value={attributes.testimonial_two.author?.title}
+											value={testimonial_two.author?.title}
+											style={{
+												color: textColor,
+											}}
 										/>
 									</div>
 								</figcaption>

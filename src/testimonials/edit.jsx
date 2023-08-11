@@ -11,7 +11,13 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { RichText, MediaUpload } from "@wordpress/block-editor";
+import {
+	useBlockProps,
+	RichText,
+	MediaUpload,
+	InspectorControls,
+	PanelColorSettings,
+} from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,13 +36,13 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	// const props = useBlockProps();
+	const blockProps = useBlockProps();
+
+	const { testimonial_one, testimonial_two, backgroundColor, textColor } =
+		attributes;
 
 	const setTestimonial = (position, { keys, content }) => {
-		const testimonial =
-			position === "left"
-				? attributes.testimonial_one
-				: attributes.testimonial_two;
+		const testimonial = position === "left" ? testimonial_one : testimonial_two;
 
 		// Split the nested key into its segments
 		const segments = keys.split(".");
@@ -52,26 +58,49 @@ export default function Edit({ attributes, setAttributes }) {
 
 		if (position === "left") {
 			setAttributes({
-				testimonial_one: { ...attributes.testimonial_one, ...testimonial },
+				testimonial_one: { ...testimonial_one, ...testimonial },
 			});
 		} else {
 			setAttributes({
-				testimonial_two: { ...attributes.testimonial_two, ...testimonial },
+				testimonial_two: { ...testimonial_two, ...testimonial },
 			});
 		}
 	};
 
 	return (
-		<div className="relative isolate overflow-hidden pt-14">
-			<section className="bg-white py-24 sm:py-32">
+		<div className="relative isolate overflow-hidden">
+			<InspectorControls>
+				<PanelColorSettings
+					title={__("Color settings")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: backgroundColor,
+							onChange: (content) =>
+								setAttributes({ backgroundColor: content }),
+							label: __("Background color"),
+						},
+						{
+							value: textColor,
+							onChange: (content) => setAttributes({ textColor: content }),
+							label: __("Text color"),
+						},
+					]}
+				/>
+			</InspectorControls>
+			<section
+				className="bg-white py-24 sm:py-32"
+				style={{ backgroundColor: backgroundColor }}
+			>
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
 					<div className="mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-8 xl:gap-20">
 						<div className="flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20">
 							<figure className="flex flex-auto flex-col justify-between">
 								<blockquote className="text-lg leading-8 text-gray-900">
 									<RichText
+										{...blockProps}
 										tagName="p"
-										value={attributes.testimonial_one.text}
+										value={testimonial_one.text}
 										onChange={(content) =>
 											setTestimonial("left", {
 												keys: "text",
@@ -79,6 +108,9 @@ export default function Edit({ attributes, setAttributes }) {
 											})
 										}
 										placeholder={__("Write the testimonial here...")}
+										style={{
+											color: textColor,
+										}}
 									/>
 								</blockquote>
 								<figcaption className="mt-10 flex items-center gap-x-6">
@@ -94,12 +126,12 @@ export default function Edit({ attributes, setAttributes }) {
 											});
 										}}
 										allowedTypes={["image"]}
-										value={attributes.testimonial_one.author?.image?.url}
+										value={testimonial_one.author?.image?.url}
 										render={({ open }) => (
 											<img
 												onClick={open}
 												className="h-14 w-14 rounded-full bg-gray-50 cursor-pointer"
-												src={attributes.testimonial_one.author?.image?.url}
+												src={testimonial_one.author?.image?.url}
 												alt=""
 											/>
 										)}
@@ -108,7 +140,7 @@ export default function Edit({ attributes, setAttributes }) {
 										<RichText
 											tagName="div"
 											className="font-semibold text-gray-900"
-											value={attributes.testimonial_one.author?.name}
+											value={testimonial_one.author?.name}
 											onChange={(content) =>
 												setTestimonial("left", {
 													keys: "author.name",
@@ -116,11 +148,14 @@ export default function Edit({ attributes, setAttributes }) {
 												})
 											}
 											placeholder={__("Author name")}
+											style={{
+												color: textColor,
+											}}
 										/>
 										<RichText
 											tagName="div"
 											className="mt-1 text-gray-500"
-											value={attributes.testimonial_one.author?.title}
+											value={testimonial_one.author?.title}
 											onChange={(content) =>
 												setTestimonial("left", {
 													keys: "author.title",
@@ -128,6 +163,9 @@ export default function Edit({ attributes, setAttributes }) {
 												})
 											}
 											placeholder={__("Author title")}
+											style={{
+												color: textColor,
+											}}
 										/>
 									</div>
 								</figcaption>
@@ -137,8 +175,9 @@ export default function Edit({ attributes, setAttributes }) {
 							<figure className="flex flex-auto flex-col justify-between">
 								<blockquote className="text-lg leading-8 text-gray-900">
 									<RichText
+										{...blockProps}
 										tagName="p"
-										value={attributes.testimonial_two.text}
+										value={testimonial_two.text}
 										onChange={(content) =>
 											setTestimonial("right", {
 												keys: "text",
@@ -146,6 +185,9 @@ export default function Edit({ attributes, setAttributes }) {
 											})
 										}
 										placeholder={__("Write the testimonial here...")}
+										style={{
+											color: textColor,
+										}}
 									/>
 								</blockquote>
 								<figcaption className="mt-10 flex items-center gap-x-6">
@@ -161,12 +203,12 @@ export default function Edit({ attributes, setAttributes }) {
 											});
 										}}
 										allowedTypes={["image"]}
-										value={attributes.testimonial_two.author?.image?.url}
+										value={testimonial_two.author?.image?.url}
 										render={({ open }) => (
 											<img
 												onClick={open}
 												className="h-14 w-14 rounded-full bg-gray-50 cursor-pointer"
-												src={attributes.testimonial_two.author?.image?.url}
+												src={testimonial_two.author?.image?.url}
 												alt=""
 											/>
 										)}
@@ -175,7 +217,7 @@ export default function Edit({ attributes, setAttributes }) {
 										<RichText
 											tagName="div"
 											className="font-semibold text-gray-900"
-											value={attributes.testimonial_two.author?.name}
+											value={testimonial_two.author?.name}
 											onChange={(content) =>
 												setTestimonial("right", {
 													keys: "author.name",
@@ -183,11 +225,14 @@ export default function Edit({ attributes, setAttributes }) {
 												})
 											}
 											placeholder={__("Author name")}
+											style={{
+												color: textColor,
+											}}
 										/>
 										<RichText
 											tagName="div"
 											className="mt-1 text-gray-500"
-											value={attributes.testimonial_two.author?.title}
+											value={testimonial_two.author?.title}
 											onChange={(content) =>
 												setTestimonial("right", {
 													keys: "author.title",
@@ -195,6 +240,9 @@ export default function Edit({ attributes, setAttributes }) {
 												})
 											}
 											placeholder={__("Author title")}
+											style={{
+												color: textColor,
+											}}
 										/>
 									</div>
 								</figcaption>

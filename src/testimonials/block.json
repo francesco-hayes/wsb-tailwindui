@@ -15,6 +15,12 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"backgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
 		"testimonial_one": {
 			"type": "object",
 			"default": {
