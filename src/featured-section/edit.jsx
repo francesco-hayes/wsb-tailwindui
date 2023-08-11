@@ -15,8 +15,9 @@ import {
 	RichText,
 	InspectorControls,
 	MediaUpload,
+	useBlockProps,
 } from "@wordpress/block-editor";
-import { PanelBody, PanelRow, SelectControl } from "@wordpress/components";
+import { PanelBody, PanelRow, SelectControl, PanelColorSettings } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 
 /**
@@ -38,7 +39,8 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { direction, image } = attributes;
+	const blockProps = useBlockProps();
+	const { direction, image, title, sub_title, paragraph, textColor, backgroundColor } = attributes;
 
 	const directions = [
 		{
@@ -72,7 +74,10 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<div className="overflow-hidden bg-white py-24 sm:py-32">
+		<div
+			className="overflow-hidden bg-white py-24 sm:py-32"
+			style={{ backgroundColor: backgroundColor }}
+		>
 			<InspectorControls key="setting">
 				<div id="tw-settings">
 					<PanelBody title={__("Settings")} initialOpen={true}>
@@ -90,6 +95,26 @@ export default function Edit({ attributes, setAttributes }) {
 								</div>
 							</fieldset>
 						</PanelRow>
+						<PanelRow>
+							<PanelColorSettings
+								title={__("Color settings")}
+								initialOpen={false}
+								colorSettings={[
+									{
+										value: backgroundColor,
+										onChange: (content) =>
+											setAttributes({ backgroundColor: content }),
+										label: __("Background color"),
+									},
+									{
+										value: textColor,
+										onChange: (content) =>
+											setAttributes({ textColor: content }),
+										label: __("Text color"),
+									},
+								]}
+							/>
+						</PanelRow>
 					</PanelBody>
 				</div>
 			</InspectorControls>
@@ -102,42 +127,33 @@ export default function Edit({ attributes, setAttributes }) {
 									<RichText
 										tagName="h2"
 										className="text-base font-semibold leading-7 text-indigo-600"
-										value={attributes.title}
+										value={title}
 										onChange={(content) => setAttributes({ title: content })}
 										placeholder={__("Write the title here...")}
+										style={{ color: textColor }}
 									/>
 									<RichText
+										{...blockProps}
 										tagName="p"
 										className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-										value={attributes.sub_title}
+										value={sub_title}
 										onChange={(content) =>
 											setAttributes({ sub_title: content })
 										}
 										placeholder={__("Write the sub title here...")}
+										style={{ color: textColor }}
 									/>
 									<RichText
+										{...blockProps}
 										tagName="p"
 										className="mt-6 text-lg leading-8 text-gray-600"
-										value={attributes.paragraph}
+										value={paragraph}
 										onChange={(content) =>
 											setAttributes({ paragraph: content })
 										}
 										placeholder={__("Write the paragraph here...")}
+										style={{ color: textColor }}
 									/>
-									{/* <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-										{features.map((feature) => (
-											<div key={feature.name} className="relative pl-9">
-												<dt className="inline font-semibold text-gray-900">
-													<feature.icon
-														className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
-														aria-hidden="true"
-													/>
-													{feature.name}
-												</dt>{" "}
-												<dd className="inline">{feature.description}</dd>
-											</div>
-										))}
-									</dl> */}
 								</div>
 							</div>
 							<div className="flex items-start justify-end lg:order-first">
@@ -181,42 +197,33 @@ export default function Edit({ attributes, setAttributes }) {
 									<RichText
 										tagName="h2"
 										className="text-base font-semibold leading-7 text-indigo-600"
-										value={attributes.title}
+										value={title}
 										onChange={(content) => setAttributes({ title: content })}
 										placeholder={__("Write the title here...")}
+										style={{ color: textColor }}
 									/>
 									<RichText
+										{...blockProps}
 										tagName="p"
 										className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-										value={attributes.sub_title}
+										value={sub_title}
 										onChange={(content) =>
 											setAttributes({ sub_title: content })
 										}
 										placeholder={__("Write the sub title here...")}
+										style={{ color: textColor }}
 									/>
 									<RichText
+										{...blockProps}
 										tagName="p"
 										className="mt-6 text-lg leading-8 text-gray-600"
-										value={attributes.paragraph}
+										value={paragraph}
 										onChange={(content) =>
 											setAttributes({ paragraph: content })
 										}
 										placeholder={__("Write the paragraph here...")}
+										style={{ color: textColor }}
 									/>
-									{/* <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-										{features.map((feature) => (
-											<div key={feature.name} className="relative pl-9">
-												<dt className="inline font-semibold text-gray-900">
-													<feature.icon
-														className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
-														aria-hidden="true"
-													/>
-													{feature.name}
-												</dt>{" "}
-												<dd className="inline">{feature.description}</dd>
-											</div>
-										))}
-									</dl> */}
 								</div>
 							</div>
 							<MediaUpload

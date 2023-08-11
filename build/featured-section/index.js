@@ -62,7 +62,10 @@ function Edit({
 }) {
   const {
     direction,
-    image
+    image,
+    title,
+    sub_title,
+    paragraph
   } = attributes;
   const directions = [{
     label: "Left",
@@ -104,7 +107,35 @@ function Edit({
     onChange: value => setAttributes({
       direction: value
     })
-  }))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color settings"),
+    initialOpen: false,
+    colorSettings: [{
+      value: backgroundColor,
+      onChange: content => setAttributes({
+        backgroundColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background color")
+    }, {
+      value: stepsBackgroundColor,
+      onChange: content => setAttributes({
+        stepsBackgroundColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Steps background color")
+    }, {
+      value: titleTextColor,
+      onChange: content => setAttributes({
+        titleTextColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Title color")
+    }, {
+      value: subTitleTextColor,
+      onChange: content => setAttributes({
+        subTitleTextColor: content
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Sub title color")
+    }]
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mx-auto max-w-7xl px-6 lg:px-8"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
@@ -115,7 +146,7 @@ function Edit({
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h2",
     className: "text-base font-semibold leading-7 text-indigo-600",
-    value: attributes.title,
+    value: title,
     onChange: content => setAttributes({
       title: content
     }),
@@ -123,7 +154,7 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl",
-    value: attributes.sub_title,
+    value: sub_title,
     onChange: content => setAttributes({
       sub_title: content
     }),
@@ -131,7 +162,7 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "mt-6 text-lg leading-8 text-gray-600",
-    value: attributes.paragraph,
+    value: paragraph,
     onChange: content => setAttributes({
       paragraph: content
     }),
@@ -169,7 +200,7 @@ function Edit({
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h2",
     className: "text-base font-semibold leading-7 text-indigo-600",
-    value: attributes.title,
+    value: title,
     onChange: content => setAttributes({
       title: content
     }),
@@ -177,7 +208,7 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl",
-    value: attributes.sub_title,
+    value: sub_title,
     onChange: content => setAttributes({
       sub_title: content
     }),
@@ -185,7 +216,7 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "mt-6 text-lg leading-8 text-gray-600",
-    value: attributes.paragraph,
+    value: paragraph,
     onChange: content => setAttributes({
       paragraph: content
     }),
