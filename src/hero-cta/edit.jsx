@@ -18,6 +18,7 @@ import {
 	MediaUploadCheck,
 	InspectorControls,
 	URLInputButton,
+	PanelColorSettings,
 } from "@wordpress/block-editor";
 import {
 	Button,
@@ -45,8 +46,20 @@ const ALLOWED_MEDIA_TYPES = ["image"];
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	// const props = useBlockProps();
-	const { buttons } = attributes;
+	const blockProps = useBlockProps();
+	const {
+		title,
+		paragraph,
+		imageURL,
+		imageALT,
+		buttons,
+		backgroundColor,
+		titleTextColor,
+		paragraphTextColor,
+		buttonTextColor,
+		buttonColor,
+		backgroundColorOpacity,
+	} = attributes;
 
 	const onSelectImage = function (media) {
 		setAttributes({
@@ -74,14 +87,14 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	return (
-		<div className="relative isolate overflow-hidden pt-14">
+		<div className="relative isolate overflow-hidden">
 			<InspectorControls key="setting">
 				<div id="tw-settings">
 					<PanelBody title={__("Settings", "basic-block")} initialOpen={true}>
 						<PanelRow>
 							<fieldset>
 								<legend className="blocks-base-control__label">
-									{__("Background image", "gutenpride")}
+									{__("Background image")}
 								</legend>
 								<MediaUploadCheck>
 									<MediaUpload
@@ -94,6 +107,53 @@ export default function Edit({ attributes, setAttributes }) {
 									/>
 								</MediaUploadCheck>
 							</fieldset>
+						</PanelRow>
+						<PanelRow>
+							<PanelColorSettings
+								title={__("Color settings")}
+								initialOpen={false}
+								colorSettings={[
+									{
+										value: backgroundColor,
+										onChange: (content) =>
+											setAttributes({ backgroundColor: content }),
+										label: __("Background gradient color"),
+									},
+									{
+										value: buttonColor,
+										onChange: (content) =>
+											setAttributes({ buttonColor: content }),
+										label: __("Button color"),
+									},
+									{
+										value: buttonTextColor,
+										onChange: (content) =>
+											setAttributes({ buttonTextColor: content }),
+										label: __("Button text color"),
+									},
+									{
+										value: titleTextColor,
+										onChange: (content) =>
+											setAttributes({ titleTextColor: content }),
+										label: __("Title text color"),
+									},
+									{
+										value: paragraphTextColor,
+										onChange: (content) =>
+											setAttributes({ paragraphTextColor: content }),
+										label: __("Paragraph text color"),
+									},
+								]}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								value={backgroundColorOpacity}
+								onChange={(value) =>
+									setAttributes({ backgroundColorOpacity: value })
+								}
+								placeholder="Background Opacity Value"
+							/>
 						</PanelRow>
 						{buttons.map((input, index) => (
 							<PanelRow>
@@ -129,39 +189,37 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelBody>
 				</div>
 			</InspectorControls>
+			<div
+				className="absolute inset-x-0 inset-y-0 z-10 transform-gpu overflow-hidden pointer-events-none bg-black opacity-30"
+				aria-hidden="true"
+				style={{
+					backgroundColor: backgroundColor,
+					opacity: backgroundColorOpacity,
+				}}
+			></div>
 			<img
-				src={attributes.imageURL}
-				alt=""
+				src={imageURL}
+				alt={imageALT}
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
-
-			<div
-				className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-				aria-hidden="true"
-			>
-				<div
-					className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-					style={{
-						clipPath:
-							"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-					}}
-				/>
-			</div>
-			<div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+			<div className="relative z-20 mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
 				<div className="text-center">
 					<RichText
 						tagName="h1"
 						className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
-						value={attributes.title}
+						value={title}
 						onChange={(content) => setAttributes({ title: content })}
 						placeholder={__("Write the title here...")}
+						style={{ color: titleTextColor }}
 					/>
 					<RichText
+						{...blockProps}
 						tagName="p"
 						className="mt-6 text-lg leading-8 text-gray-300"
-						value={attributes.paragraph}
+						value={paragraph}
 						onChange={(content) => setAttributes({ paragraph: content })}
 						placeholder={__("Write the paragraph here...")}
+						style={{ color: paragraphTextColor }}
 					/>
 					<div className="button-group mt-10 flex items-center justify-center gap-x-6">
 						{buttons.map((button, index) => (
@@ -173,6 +231,10 @@ export default function Edit({ attributes, setAttributes }) {
 										? "rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
 										: "text-sm font-semibold leading-6 text-white ml-2"
 								}
+								style={{
+									backgroundColor: index == 0 ? buttonColor : "transparent",
+									color: index == 0 ? buttonTextColor : "white",
+								}}
 							>
 								{button.text}
 							</a>
@@ -180,26 +242,6 @@ export default function Edit({ attributes, setAttributes }) {
 					</div>
 				</div>
 			</div>
-			<div
-				className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-				aria-hidden="true"
-			>
-				<div
-					className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-					style={{
-						clipPath:
-							"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-					}}
-				/>
-			</div>
 		</div>
-		// <RichText
-		// 	{ ...blockProps }
-		// 	tagName="p"
-		// 	onChange={onChangeContent}
-		// 	allowedFormats={["core/bold", "core/italic"]}
-		// 	value={attributes.content}
-		// 	placeholder={__("Write your text...")}
-		// />
 	);
 }

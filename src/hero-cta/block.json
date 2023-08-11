@@ -15,6 +15,24 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"backgroundColor": {
+			"type": "string"
+		},
+		"titleTextColor": {
+			"type": "string"
+		},
+		"paragraphTextColor": {
+			"type": "string"
+		},
+		"buttonColor": {
+			"type": "string"
+		},
+		"buttonTextColor": {
+			"type": "string"
+		},
+		"backgroundColorOpacity": {
+			"type": "string"
+		},
 		"title": {
 			"type": "string",
 			"selector": "h1"
