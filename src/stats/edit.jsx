@@ -57,8 +57,6 @@ export default function Edit({ attributes, setAttributes }) {
 		return style;
 	}
 
-	// todo: text justifying and spacing
-
 	return (
 		<div
 			className="wsb-tailwindui bg-white py-24 sm:py-32"

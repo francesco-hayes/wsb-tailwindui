@@ -79,9 +79,6 @@ function Edit({
     }
     return style;
   };
-
-  // todo: text justifying and spacing
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "wsb-tailwindui bg-white py-24 sm:py-32",
     style: {
