@@ -6,8 +6,7 @@
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-		"build:css": "for block in ./src/*/; do npx tailwindcss -i $block/tailwind.scss -o ./src/(basename $block)/style.scss --watch; done",
-		"build": "npm run build:css && wp-scripts build",
+		"build": "wp-scripts build",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
