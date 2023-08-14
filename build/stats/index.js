@@ -79,11 +79,13 @@ function Edit({
     }
     return style;
   };
+
+  // todo: text justifying and spacing
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "bg-white py-24 sm:py-32",
+    className: "wsb-tailwindui bg-white py-24 sm:py-32",
     style: {
-      backgroundColor: backgroundColor,
-      ...spacingStyles()
+      backgroundColor: backgroundColor
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color settings"),
