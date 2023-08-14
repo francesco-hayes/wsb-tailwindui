@@ -9,7 +9,7 @@ import { __ } from "@wordpress/i18n";
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#blockProps
  */
 import {
 	RichText,
@@ -17,6 +17,7 @@ import {
 	InspectorControls,
 	PanelColorSettings,
 } from "@wordpress/block-editor";
+import { __experimentalBoxControl as BoxControl } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -35,19 +36,31 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const blockProps = useBlockProps();
-
 	const {
+		spacing,
 		backgroundColor,
 		statBackgroundColor,
 		statTextColor,
 		titleTextColor,
 	} = attributes;
 
+	const spacingStyles = () => {
+		let style = {};
+		if (spacing) {
+			style = {
+				paddingTop: spacing.top,
+				paddingBottom: spacing.bottom,
+				paddingLeft: spacing.left,
+				paddingRight: spacing.right,
+			};
+		}
+		return style;
+	}
+
 	return (
 		<div
-			style={{ backgroundColor: backgroundColor }}
 			className="bg-white py-24 sm:py-32"
+			style={{ backgroundColor: backgroundColor, ...spacingStyles() }}
 		>
 			<InspectorControls>
 				<PanelColorSettings
@@ -78,12 +91,13 @@ export default function Edit({ attributes, setAttributes }) {
 						},
 					]}
 				/>
+				<BoxControl onChange={(values) => setAttributes({ spacing: values })} />
 			</InspectorControls>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="mx-auto max-w-2xl lg:max-w-none">
 					<div className="text-center">
 						<RichText
-							{...blockProps}
+							{...useBlockProps()}
 							tagName="h2"
 							className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
 							value={attributes.title}
@@ -103,7 +117,7 @@ export default function Edit({ attributes, setAttributes }) {
 								Years
 							</dt>
 							<RichText
-								{...useBlockProps}
+								{...useBlockProps()}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.years}
@@ -122,7 +136,7 @@ export default function Edit({ attributes, setAttributes }) {
 								Events
 							</dt>
 							<RichText
-								{...useBlockProps}
+								{...useBlockProps()}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.events}
@@ -141,7 +155,7 @@ export default function Edit({ attributes, setAttributes }) {
 								Speakers
 							</dt>
 							<RichText
-								{...useBlockProps}
+								{...useBlockProps()}
 								tagName="dd"
 								className="order-first text-3xl font-semibold tracking-tight text-gray-900"
 								value={attributes.speakers}

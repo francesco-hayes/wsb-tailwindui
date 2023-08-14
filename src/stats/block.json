@@ -8,13 +8,26 @@
 	"icon": "dashicons-align-full-width",
 	"description": "Example block scaffolded with Create Block tool.",
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
 	},
 	"textdomain": "wsb-tailwindui-stats",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"attributes": {
+		"spacing": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"left": "0px",
+				"right": "0px",
+				"bottom": "0px"
+			}
+		},
 		"backgroundColor": {
 			"type": "string"
 		},

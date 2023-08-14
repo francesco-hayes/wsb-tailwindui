@@ -2,27 +2,25 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/stats/edit.jsx":
-/*!****************************!*\
-  !*** ./src/stats/edit.jsx ***!
-  \****************************/
+/***/ "./src/spacing/edit.jsx":
+/*!******************************!*\
+  !*** ./src/spacing/edit.jsx ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/stats/editor.scss");
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/spacing/editor.scss");
 
 /**
  * Retrieves the translation of text.
@@ -35,8 +33,9 @@ __webpack_require__.r(__webpack_exports__);
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#blockProps
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
 
 
 
@@ -60,159 +59,49 @@ function Edit({
   attributes,
   setAttributes
 }) {
+  const [paddingSize, setPaddingSize] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const {
-    spacing,
     backgroundColor,
-    statBackgroundColor,
-    statTextColor,
-    titleTextColor
+    spacing
   } = attributes;
-  const spacingStyles = () => {
-    let style = {};
-    if (spacing) {
-      style = {
-        paddingTop: spacing.top,
-        paddingBottom: spacing.bottom,
-        paddingLeft: spacing.left,
-        paddingRight: spacing.right
-      };
-    }
-    return style;
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "bg-white py-24 sm:py-32",
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      backgroundColor: backgroundColor,
-      ...spacingStyles()
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.PanelColorSettings, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Color settings"),
+      backgroundColor: backgroundColor
+    },
+    className: "bg-white"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalDimensionControl, {
+    label: "Padding",
+    icon: "desktop",
+    onChange: value => setPaddingSize(value),
+    value: paddingSize
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color settings"),
     initialOpen: false,
     colorSettings: [{
       value: backgroundColor,
       onChange: content => setAttributes({
         backgroundColor: content
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background color")
-    }, {
-      value: statBackgroundColor,
-      onChange: content => setAttributes({
-        statBackgroundColor: content
-      }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Stat background color")
-    }, {
-      value: titleTextColor,
-      onChange: content => setAttributes({
-        titleTextColor: content
-      }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Title text color")
-    }, {
-      value: statTextColor,
-      onChange: content => setAttributes({
-        statTextColor: content
-      }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Stat text color")
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background color")
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalBoxControl, {
-    onChange: values => setAttributes({
-      spacing: values
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "mx-auto max-w-7xl px-6 lg:px-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "mx-auto max-w-2xl lg:max-w-none"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "text-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    tagName: "h2",
-    className: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl",
-    value: attributes.title,
-    onChange: content => setAttributes({
-      title: content
-    }),
-    style: {
-      color: titleTextColor
-    }
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dl", {
-    className: "mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    style: {
-      backgroundColor: statBackgroundColor
-    },
-    className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
-    style: {
-      color: statTextColor
-    },
-    className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Years"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    tagName: "dd",
-    className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.years,
-    onChange: content => setAttributes({
-      years: content
-    }),
-    style: {
-      color: statTextColor
-    }
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    style: {
-      backgroundColor: statBackgroundColor
-    },
-    className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
-    style: {
-      color: statTextColor
-    },
-    className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Events"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    tagName: "dd",
-    className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.events,
-    onChange: content => setAttributes({
-      events: content
-    }),
-    style: {
-      color: statTextColor
-    }
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    style: {
-      backgroundColor: statBackgroundColor
-    },
-    className: "flex flex-col bg-gray-400/5 p-8"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("dt", {
-    style: {
-      color: statTextColor
-    },
-    className: "text-sm font-semibold leading-6 text-gray-600"
-  }, "Speakers"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)(), {
-    tagName: "dd",
-    className: "order-first text-3xl font-semibold tracking-tight text-gray-900",
-    value: attributes.speakers,
-    onChange: content => setAttributes({
-      speakers: content
-    }),
-    style: {
-      color: statTextColor
-    }
-  })))))));
+  })));
 }
 
 /***/ }),
 
-/***/ "./src/stats/index.js":
-/*!****************************!*\
-  !*** ./src/stats/index.js ***!
-  \****************************/
+/***/ "./src/spacing/index.js":
+/*!******************************!*\
+  !*** ./src/spacing/index.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/stats/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/stats/edit.jsx");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/stats/save.jsx");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/stats/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/spacing/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/spacing/edit.jsx");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/spacing/save.jsx");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/spacing/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -254,10 +143,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/stats/save.jsx":
-/*!****************************!*\
-  !*** ./src/stats/save.jsx ***!
-  \****************************/
+/***/ "./src/spacing/save.jsx":
+/*!******************************!*\
+  !*** ./src/spacing/save.jsx ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -374,10 +263,10 @@ function save({
 
 /***/ }),
 
-/***/ "./src/stats/editor.scss":
-/*!*******************************!*\
-  !*** ./src/stats/editor.scss ***!
-  \*******************************/
+/***/ "./src/spacing/editor.scss":
+/*!*********************************!*\
+  !*** ./src/spacing/editor.scss ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -386,10 +275,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/stats/style.scss":
-/*!******************************!*\
-  !*** ./src/stats/style.scss ***!
-  \******************************/
+/***/ "./src/spacing/style.scss":
+/*!********************************!*\
+  !*** ./src/spacing/style.scss ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -475,13 +364,13 @@ function _extends() {
 
 /***/ }),
 
-/***/ "./src/stats/block.json":
-/*!******************************!*\
-  !*** ./src/stats/block.json ***!
-  \******************************/
+/***/ "./src/spacing/block.json":
+/*!********************************!*\
+  !*** ./src/spacing/block.json ***!
+  \********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/stats","version":"0.1.0","title":"TW Stats","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false,"spacing":{"padding":true,"margin":true}},"textdomain":"wsb-tailwindui-stats","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"spacing":{"type":"object","default":{"top":"0px","left":"0px","right":"0px","bottom":"0px"}},"backgroundColor":{"type":"string"},"statBackgroundColor":{"type":"string"},"titleTextColor":{"type":"string"},"statTextColor":{"type":"string"},"title":{"type":"string","default":"Trusted by event hosts around the globe."},"years":{"type":"string","default":"43"},"events":{"type":"string","default":"100,000"},"speakers":{"type":"string","default":"4,000+"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wsb-tailwindui/spacing","version":"0.1.0","title":"TW Spacing","category":"wsb-tailwindui","icon":"dashicons-align-full-width","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"wsb-tailwindui-spacing","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"backgroundColor":{"type":"string"},"height":{"type":"string"}}}');
 
 /***/ })
 
@@ -595,8 +484,8 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"stats/index": 0,
-/******/ 			"stats/style-index": 0
+/******/ 			"spacing/index": 0,
+/******/ 			"spacing/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -646,7 +535,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["stats/style-index"], () => (__webpack_require__("./src/stats/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["spacing/style-index"], () => (__webpack_require__("./src/spacing/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
